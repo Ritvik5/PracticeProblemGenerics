@@ -31,5 +31,29 @@ namespace PracticeProblemGenerics
             }
             Console.WriteLine();
         }
+
+        public void DeleteMethod<T>(ref T[] array1, T elements)
+        {
+            int count = 0;
+
+            for(int i = 0; i < array1.Length; i++)
+            {
+                if (array1[i].Equals(elements))
+                {
+                    count++;
+                }
+                else if (count > 0)
+                {
+                    array1[i-count] = array1[i];
+                }
+            }
+            Array.Resize(ref array1,array1.Length - count);
+
+            foreach (T obj1 in array1)
+            {
+                Console.Write(obj1 + " ");
+            }
+            Console.WriteLine();
+        }
     }
 }
